@@ -52,8 +52,8 @@ let getTop100 = (req, res) => {
         .catch(err => err)
     return res.status(200).json(data)
 }
-let getChartHome = (req, res) => {
-    let data = ZingMp3.getChartHome()
+let getChartHome = async (req, res) => {
+    let data = await ZingMp3.getChartHome()
         .then(result => result)
         .catch(err => err)
     return res.status(200).json(data)
