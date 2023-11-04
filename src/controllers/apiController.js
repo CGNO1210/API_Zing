@@ -26,7 +26,7 @@ let search = async (req, res) => {
     return res.status(200).json(data)
 }
 
-let getDetailPlaylist = (req, res) => {
+let getDetailPlaylist = async (req, res) => {
     idPlayList = req.query.id
     if (!idPlayList) {
         return res.status(200).json({
@@ -34,20 +34,20 @@ let getDetailPlaylist = (req, res) => {
             msg: "missing id playlist"
         })
     }
-    let data = ZingMp3.getDetailPlaylist(idPlayList)
+    let data = await ZingMp3.getDetailPlaylist(idPlayList)
         .then(result => result)
         .catch(err => err)
     return res.status(200).json(data)
 }
-let getHome = (req, res) => {
-    let data = ZingMp3.getHome()
+let getHome = async (req, res) => {
+    let data = await ZingMp3.getHome()
         .then(result => result)
         .catch(err => err)
     return res.status(200).json(data)
 }
 
-let getTop100 = (req, res) => {
-    let data = ZingMp3.getTop100()
+let getTop100 = async (req, res) => {
+    let data = await ZingMp3.getTop100()
         .then(result => result)
         .catch(err => err)
     return res.status(200).json(data)
@@ -58,13 +58,13 @@ let getChartHome = async (req, res) => {
         .catch(err => err)
     return res.status(200).json(data)
 }
-let getNewReleaseChart = (req, res) => {
-    let data = ZingMp3.getNewReleaseChart()
+let getNewReleaseChart = async (req, res) => {
+    let data = await ZingMp3.getNewReleaseChart()
         .then(result => result)
         .catch(err => err)
     return res.status(200).json(data)
 }
-let getInfoSong = (req, res) => {
+let getInfoSong = async (req, res) => {
     id = req.query.id
     if (!id) {
         return res.status(200).json({
@@ -72,12 +72,12 @@ let getInfoSong = (req, res) => {
             msg: "missing id song"
         })
     }
-    let data = ZingMp3.getInfoSong(id)
+    let data = await ZingMp3.getInfoSong(id)
         .then(result => result)
         .catch(err => err)
     return res.status(200).json(data)
 }
-let getArtist = (req, res) => {
+let getArtist = async (req, res) => {
     let name = req.query.name
     if (!name) {
         return res.status(200).json({
@@ -85,7 +85,7 @@ let getArtist = (req, res) => {
             msg: "Please input your name song"
         })
     }
-    let data = ZingMp3.search(name)
+    let data = await ZingMp3.search(name)
         .then(data => data)
         .catch(err => err)
     return res.status(200).json(data)
