@@ -27,7 +27,7 @@ let search = async (req, res) => {
 }
 
 let getDetailPlaylist = async (req, res) => {
-    idPlayList = req.query.id
+    let idPlayList = req.query.id
     if (!idPlayList) {
         return res.status(200).json({
             err: 1,
@@ -65,7 +65,7 @@ let getNewReleaseChart = async (req, res) => {
     return res.status(200).json(data)
 }
 let getInfoSong = async (req, res) => {
-    id = req.query.id
+    let id = req.query.id
     if (!id) {
         return res.status(200).json({
             err: 1,
